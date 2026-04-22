@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package negocio;
+
 import datos.CategoriaDAO;
 import entidades.Categoria;
 import java.util.ArrayList;
@@ -19,10 +20,12 @@ public class CategoriaControl {
     private final CategoriaDAO DATOS;
     private Categoria obj;
     private DefaultTableModel modeloTabla;
+    public int registroMostrados;
     
     public CategoriaControl(){
     this.DATOS = new CategoriaDAO();
     this.obj = new Categoria();
+    this.registroMostrados = 0;
     }
     
     public DefaultTableModel listar (String texto){
@@ -34,6 +37,7 @@ public class CategoriaControl {
         
         String estado;
         String[] registro = new String[4];
+        this.registroMostrados = 0;
         
         for(Categoria item: lista){
             if (item.isActivo()) {
@@ -47,6 +51,7 @@ public class CategoriaControl {
             registro[2] = item.getDescripcion();
             registro[3] = estado;
             this.modeloTabla.addRow(registro);
+            this.registroMostrados = this.registroMostrados +1;
             
         }
         return this.modeloTabla;
@@ -67,19 +72,53 @@ public class CategoriaControl {
     }
     
     public String actualizar (int id, String nombre, String nombreAnt, String descripcion){
-    
+        if (nombre.equals(nombreAnt)) {
+            obj.setId(id);
+            obj.setNombre(nombre);
+            obj.setDescripcion(descripcion);
+            if (DATOS.actualizar(obj)) {
+                return "OKEY";
+            }else{
+                return "Error en la actualización";
+            }          
+        } else {
+            if (DATOS.existe(nombre)) {
+                return "El registro ya existe";
+            }else{
+                obj.setId(id);
+                obj.setNombre(nombre);
+                obj.setDescripcion(descripcion);
+                if (DATOS.actualizar(obj)) {
+                    return "OKEY";
+                }else{
+                    return "Error en la actualización";
+                }
+            }
+        }
     }
     
     public String desactivar(int id){
-    
+        if (DATOS.desactivar(id)) {
+            return "OKEY";
+        }else{
+            return "No se puede desactivar el registro";
+        }
     }
     
     public String activar(int id){
-    
+        if (DATOS.activar(id)) {
+            return "OKEY";
+        } else{
+            return "No se puede activar el registro";
+        }
     }
     
     public int total(){
+        return DATOS.total();
+    }
     
+    public int totalMostrados(){
+        return this.registroMostrados;
     }
 }
  
