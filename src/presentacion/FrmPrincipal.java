@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Gis
+ * @author GiselleAcostaRicardo
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 
@@ -18,7 +18,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+        setExtendedState(MAXIMIZED_BOTH); 
+       
     }
 
     /**
@@ -36,7 +37,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 super.paintComponent(g);
                 g.setColor(Color.white);
                 g.fillRect(0, 0, getWidth(), getHeight());
+
             }
+
         };
         menuBar = new javax.swing.JMenuBar();
         mnuAlmacen = new javax.swing.JMenu();
@@ -57,10 +60,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema de Compras y Ventas");
+        setTitle("Sistema de compras y ventas");
 
         mnuAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/almacen.png"))); // NOI18N
-        mnuAlmacen.setText("Almacén");
+        mnuAlmacen.setText("Almacen");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem1.setText("Categorias");
@@ -72,7 +75,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnuAlmacen.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem2.setText("Almacén");
+        jMenuItem2.setText("Almacen");
         mnuAlmacen.add(jMenuItem2);
 
         menuBar.add(mnuAlmacen);
@@ -86,6 +89,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem4.setText("Ingresos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         mnuCompras.add(jMenuItem4);
 
         menuBar.add(mnuCompras);
@@ -120,11 +128,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnuConsultas.setText("Consultas");
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem9.setText("Consulta Compras");
+        jMenuItem9.setText("Consulta compras");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         mnuConsultas.add(jMenuItem9);
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem10.setText("Consulta Ventas");
+        jMenuItem10.setText("Consulta ventas");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         mnuConsultas.add(jMenuItem10);
 
         menuBar.add(mnuConsultas);
@@ -139,21 +157,35 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FrmCategoria frm = new FrmCategoria();
-        escritorio.add(frm);
-        frm.setVisible(true);
+       FrmCategoria frm = new FrmCategoria();
+       escritorio.add(frm);
+       frm.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments
