@@ -28,6 +28,12 @@ public class CategoriaDAO implements CrudSimpleInterface<Categoria> {
     public CategoriaDAO(){
         CON = Conexion.getInstancia();
     }
+
+    public CategoriaDAO(Conexion CON) {
+        this.CON = CON;
+    }
+    
+    
     
     @Override
     public List<Categoria> listar(String texto) {
